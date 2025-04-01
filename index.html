@@ -1,1 +1,24 @@
-<script type="module"></script>
+<script type="module">
+	// Example function to call a function from the WASM module
+	async function callWasmFunction() {
+		const wasmPath = new URL('./out.wasm', import.meta.url)
+		const response = await fetch(wasmPath)
+		if (!response.ok) throw new Error(`Failed to fetch Wasm file. Did you run 'npm run build-wasm'?`)
+		const bytes = await response.arrayBuffer()
+		const {instance} = await WebAssembly.instantiate(bytes, {
+			module: {},
+			env: {
+				memory: new WebAssembly.Memory({initial: 256, maximum: 256}),
+				table: new WebAssembly.Table({initial: 0, element: 'anyfunc'}),
+			},
+		})
+
+		// Assuming the WASM module exports a function named 'myFunction'
+		// const result = instance.exports.myFunction()
+		console.log(instance.exports)
+		console.log('Result from WASM function:', result)
+	}
+
+	// Call the function to demonstrate usage
+	callWasmFunction()
+</script>

@@ -24,8 +24,12 @@ Compiles to WebAssembly in `out.wasm`.
 
 ## `npm run build-native`
 
-Compiles to native in `out`.
+(WIP missing headers) Compiles to native in `out`.
 
 ## `npm run build-js`
 
-Compiles to JavaScript in `out.js`.
+(TODO) Compiles to JavaScript in `out.js`.
+
+## `npm run serve`
+
+(WIP) Runs a web server, auto-opens a browser window, and runs the Wasm module in the browser.
