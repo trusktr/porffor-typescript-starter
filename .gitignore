@@ -1,5 +1,6 @@
 node_modules/
 .repl_history
+tmp
 tmp.js
 porffor_tmp.c
 out.wasm
