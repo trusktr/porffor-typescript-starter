@@ -1,0 +1,17 @@
+{
+	"name": "porffor-typescript-starter",
+	"scripts": {
+		"start": "npm run tmp-bundle && porf tmp.js",
+		"build-wasm": "npm run tmp-bundle && porf wasm tmp.js out.wasm",
+		"build-native": "npm run tmp-bundle && porf native tmp.js out",
+		"// For now we bundle with ESBuild, Porffor does not yet support cross-file ES Module imports/exports except for type-only": "",
+		"tmp-bundle": "esbuild index.ts --bundle --format=esm --target=esnext --outfile=tmp.js"
+	},
+	"devDependencies": {
+		"porffor": "^0.57.5",
+		"typescript": "^5.8.2"
+	},
+	"dependencies": {
+		"esbuild": "^0.25.2"
+	}
+}
